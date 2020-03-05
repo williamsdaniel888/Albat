@@ -4,7 +4,7 @@ Code for "[Adversarial Training for Aspect-Based Sentiment Analysis with BERT](h
 We have used the codebase from the following paper and improved upon their results by applying adversarial training.
 "[BERT Post-Training for Review Reading Comprehension and Aspect-based Sentiment Analysis](https://www.aclweb.org/anthology/N19-1242.pdf)".
 
-## ABSA Tasks (problems)
+## ABSA Tasks
 We focus on two major tasks in Aspect-Based Sentiment Analysis (ABSA).
 
 Aspect Extraction (AE): given a review sentence ("The retina display is great."), find aspects("retina display");
