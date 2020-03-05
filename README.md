@@ -16,8 +16,10 @@ Aspect Sentiment Classification (ASC): given an aspect ("retina display") and a 
 Place post-trained BERTs into ```pt_model/```. The post-trained Laptop weights can be download [here](https://drive.google.com/file/d/1io-_zVW3sE6AbKgHZND4Snwh-wi32L4K/view?usp=sharing) and restaurant [here](https://drive.google.com/file/d/1TYk7zOoVEO8Isa6iP0cNtdDFAUlpnTyz/view?usp=sharing).
 
 Execute the following command to run the model for Aspect Extraction task:
+
 ```bash run_absa.sh ae laptop_pt laptop pt_ae 9 0```
-Here, laptop_pt is the post-trained weights for laptop, laptop is the domain, pt_ae is the fine-tuned folder in ```run/```, 9 means run 9 times and 0 means use gpu-0.
+
+Here, ```laptop_pt``` is the post-trained weights for laptop, ```laptop``` is the domain, ```pt_ae``` is the fine-tuned folder in ```run/```, ```9``` means run 9 times and ```0``` means use gpu-0.
 
 similarly,
 ```
