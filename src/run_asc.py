@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 import os
 import logging
 import argparse
@@ -31,6 +30,8 @@ from pytorch_pretrained_bert.optimization import BertAdam
 import absa_data_utils as data_utils
 from absa_data_utils import ABSATokenizer
 import modelconfig
+from math import ceil
+from bat_asc import BertForABSA
 
 logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt = '%m/%d/%Y %H:%M:%S',
@@ -42,9 +43,16 @@ def warmup_linear(x, warmup=0.002):
         return x/warmup
     return 1.0 - x
 
-
-
 def train(args):
+
+    # asc laptop best values
+    # dropout = 0.4
+    # epsilon = 5.0
+    # epoch = 9
+
+    # asc rest best values
+    dropout = 0.5
+    epsilon = 5.0
     processor = data_utils.AscProcessor()
     label_list = processor.get_labels()
     tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
@@ -91,7 +99,7 @@ def train(args):
         valid_losses=[]
     #<<<<< end of validation declaration
 
-    model = BertForSequenceClassification.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels = len(label_list) )
+    model = BertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels=len(label_list), dropout=dropout, epsilon=epsilon)
     model.cuda()
     # Prepare optimizer
     param_optimizer = [(k, v) for k, v in model.named_parameters() if v.requires_grad==True]
@@ -113,7 +121,10 @@ def train(args):
         for step, batch in enumerate(train_dataloader):
             batch = tuple(t.cuda() for t in batch)
             input_ids, segment_ids, input_mask, label_ids = batch
-            loss = model(input_ids, segment_ids, input_mask, label_ids)
+            
+            _loss, adv_loss = model(input_ids, segment_ids, input_mask, label_ids)
+            loss = _loss + adv_loss
+            
             loss.backward()
 
             lr_this_step = args.learning_rate * warmup_linear(global_step/t_total, args.warmup_proportion)

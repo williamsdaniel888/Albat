@@ -19,18 +19,18 @@ import logging
 import argparse
 import random
 import json
-
+from math import ceil
 import numpy as np
 import torch
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-
-from pytorch_pretrained_bert.tokenization import BertTokenizer
-from pytorch_pretrained_bert.modeling import PreTrainedBertModel, BertModel
 from pytorch_pretrained_bert.optimization import BertAdam
-
+from pytorch_pretrained_bert.tokenization import BertTokenizer
+from pytorch_pretrained_bert.modeling import BertPreTrainedModel, BertModel
 import absa_data_utils as data_utils
 from absa_data_utils import ABSATokenizer
 import modelconfig
+
+from bat_ae import BertForABSA
 
 logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt = '%m/%d/%Y %H:%M:%S',
@@ -42,29 +42,17 @@ def warmup_linear(x, warmup=0.002):
         return x/warmup
     return 1.0 - x
 
-
-class BertForSequenceLabeling(PreTrainedBertModel):
-    def __init__(self, config, num_labels=3):
-        super(BertForSequenceLabeling, self).__init__(config)
-        self.num_labels = num_labels
-        self.bert = BertModel(config)
-        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
-        self.classifier = torch.nn.Linear(config.hidden_size, num_labels)
-        self.apply(self.init_bert_weights)
-
-    def forward(self, input_ids, token_type_ids=None, attention_mask=None, labels=None):
-        sequence_output, _ = self.bert(input_ids, token_type_ids, attention_mask, output_all_encoded_layers=False)
-        sequence_output = self.dropout(sequence_output)
-        logits = self.classifier(sequence_output)
-
-        if labels is not None:
-            loss_fct = torch.nn.CrossEntropyLoss(ignore_index=-1)
-            loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
-            return loss
-        else:
-            return logits
-
 def train(args):
+    # ae laptop best values
+    dropout = 0.0
+    epsilon = 0.2
+    #epoch = 4
+
+    # ae rest best values
+    # dropout = 0.0
+    # epsilon = 5.0
+    # epoch = 8
+
     processor = data_utils.AeProcessor()
     label_list = processor.get_labels()
     tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
@@ -111,7 +99,7 @@ def train(args):
         valid_losses=[]
     #<<<<< end of validation declaration
 
-    model = BertForSequenceLabeling.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels = len(label_list) )
+    model = BertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels = len(label_list), dropout=dropout, epsilon=epsilon)
     model.cuda()
     # Prepare optimizer
     param_optimizer = [(k, v) for k, v in model.named_parameters() if v.requires_grad==True]
@@ -133,9 +121,12 @@ def train(args):
         for step, batch in enumerate(train_dataloader):
             batch = tuple(t.cuda() for t in batch)
             input_ids, segment_ids, input_mask, label_ids = batch
-            loss = model(input_ids, segment_ids, input_mask, label_ids)
-            loss.backward()
 
+
+            _loss, adv_loss = model(input_ids, segment_ids, input_mask, label_ids)
+            loss = _loss + adv_loss
+            loss.backward()
+            
             lr_this_step = args.learning_rate * warmup_linear(global_step/t_total, args.warmup_proportion)
             for param_group in optimizer.param_groups:
                 param_group['lr'] = lr_this_step
