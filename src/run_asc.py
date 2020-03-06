@@ -48,7 +48,6 @@ def train(args):
     # asc laptop best values
     # dropout = 0.4
     # epsilon = 5.0
-    # epoch = 9
 
     # asc rest best values
     dropout = 0.5
