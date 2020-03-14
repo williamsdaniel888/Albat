@@ -42,6 +42,8 @@ def warmup_linear(x, warmup=0.002):
         return x/warmup
     return 1.0 - x
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 def train(args):
     # ae laptop best values
     dropout = 0.0
@@ -100,7 +102,7 @@ def train(args):
     #<<<<< end of validation declaration
 
     model = BertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels = len(label_list), dropout=dropout, epsilon=epsilon)
-    model.cuda()
+    model.to(device)
     # Prepare optimizer
     param_optimizer = [(k, v) for k, v in model.named_parameters() if v.requires_grad==True]
     param_optimizer = [n for n in param_optimizer if 'pooler' not in n[0]]
@@ -119,7 +121,7 @@ def train(args):
     model.train()
     for _ in range(args.num_train_epochs):
         for step, batch in enumerate(train_dataloader):
-            batch = tuple(t.cuda() for t in batch)
+            batch = tuple(t.to(device) for t in batch)
             input_ids, segment_ids, input_mask, label_ids = batch
 
 
@@ -140,7 +142,7 @@ def train(args):
                 losses=[]
                 valid_size=0
                 for step, batch in enumerate(valid_dataloader):
-                    batch = tuple(t.cuda() for t in batch) # multi-gpu does scattering it-self
+                    batch = tuple(t.to(device) for t in batch) # multi-gpu does scattering it-self
                     input_ids, segment_ids, input_mask, label_ids = batch
                     loss = model(input_ids, segment_ids, input_mask, label_ids)
                     losses.append(loss.data.item()*input_ids.size(0) )
@@ -179,13 +181,13 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
     eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=args.eval_batch_size)
 
     model = torch.load(os.path.join(args.output_dir, "model.pt") )
-    model.cuda()
+    model.to(device)
     model.eval()
     
     full_logits=[]
     full_label_ids=[]
     for step, batch in enumerate(eval_dataloader):
-        batch = tuple(t.cuda() for t in batch)
+        batch = tuple(t.to(device) for t in batch)
         input_ids, segment_ids, input_mask, label_ids = batch
         
         with torch.no_grad():
