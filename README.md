@@ -17,4 +17,4 @@ We focus on three tasks in ABSA:
 
 ## Execution
 
-The Jupyter notebook `ALBAT Loader.ipynb` contains code for fine-tuning `albert-base-v2` on the three ABSA tasks with various datasets. We also provide instructions for further pre-training Albert in the markdown document `pt_model/albat_pt_1/readme.md`.
+The Jupyter notebook `ALBAT_Loader.ipynb` contains code for fine-tuning `albert-base-v2` on the three ABSA tasks with various datasets. We also provide instructions for further pre-training Albert in the markdown document `pt_model/albat_pt_1/readme.md`.
