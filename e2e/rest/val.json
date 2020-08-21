@@ -1,0 +1,3006 @@
+{
+    "0": {
+        "labels": [
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "All",
+            "the",
+            "appetizers",
+            "and",
+            "salads",
+            "were",
+            "fabulous",
+            ",",
+            "the",
+            "steak",
+            "was",
+            "mouth",
+            "watering",
+            "and",
+            "the",
+            "pasta",
+            "was",
+            "delicious",
+            "!",
+            "!",
+            "!"
+        ]
+    },
+    "1": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O"
+        ],
+        "sentence": [
+            "And",
+            "really",
+            "large",
+            "portions",
+            "."
+        ]
+    },
+    "2": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Go",
+            "inside",
+            "and",
+            "you",
+            "won",
+            "'",
+            "t",
+            "want",
+            "to",
+            "leave",
+            "."
+        ]
+    },
+    "3": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Save",
+            "yourself",
+            "the",
+            "time",
+            "and",
+            "trouble",
+            "and",
+            "skip",
+            "this",
+            "one",
+            "!"
+        ]
+    },
+    "4": {
+        "labels": [
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "sweet",
+            "lassi",
+            "was",
+            "excellent",
+            "as",
+            "was",
+            "the",
+            "lamb",
+            "chettinad",
+            "and",
+            "the",
+            "garlic",
+            "naan",
+            "but",
+            "the",
+            "rasamalai",
+            "was",
+            "forgettable",
+            "."
+        ]
+    },
+    "5": {
+        "labels": [
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Service",
+            "was",
+            "quick",
+            "."
+        ]
+    },
+    "6": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Oh",
+            ",",
+            "don",
+            "'",
+            "t",
+            "even",
+            "let",
+            "me",
+            "start",
+            "with",
+            "how",
+            "expensive",
+            "the",
+            "bills",
+            "were",
+            "!"
+        ]
+    },
+    "7": {
+        "labels": [
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Service",
+            "is",
+            "top",
+            "notch",
+            "."
+        ]
+    },
+    "8": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "best",
+            "thing",
+            "I",
+            "tasted",
+            "were",
+            "the",
+            "lambc",
+            "hops",
+            "."
+        ]
+    },
+    "9": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Overall",
+            "I",
+            "would",
+            "recommend",
+            "it",
+            "and",
+            "go",
+            "back",
+            "again",
+            "."
+        ]
+    },
+    "10": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "'",
+            "ve",
+            "been",
+            "here",
+            "a",
+            "couple",
+            "of",
+            "times",
+            "and",
+            "have",
+            "not",
+            "been",
+            "impressed",
+            "."
+        ]
+    },
+    "11": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Even",
+            "though",
+            "its",
+            "good",
+            "seafood",
+            ",",
+            "the",
+            "prices",
+            "are",
+            "too",
+            "high",
+            "."
+        ]
+    },
+    "12": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "In",
+            "addition",
+            ",",
+            "the",
+            "food",
+            "is",
+            "very",
+            "good",
+            "and",
+            "the",
+            "prices",
+            "are",
+            "reasonable",
+            "."
+        ]
+    },
+    "13": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "is",
+            "great",
+            "and",
+            "authentic",
+            "."
+        ]
+    },
+    "14": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "was",
+            "at",
+            "Rao",
+            "'",
+            "s",
+            "last",
+            "Wed",
+            "."
+        ]
+    },
+    "15": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "B-positive",
+            "I-positive",
+            "I-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "recommend",
+            "the",
+            "garlic",
+            "shrimp",
+            ",",
+            "okra",
+            "(",
+            "bindi",
+            ")",
+            ",",
+            "and",
+            "anything",
+            "with",
+            "lamb",
+            "."
+        ]
+    },
+    "16": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-neutral",
+            "O",
+            "O",
+            "B-neutral",
+            "O",
+            "O",
+            "B-neutral",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "menu",
+            "was",
+            "impressive",
+            "with",
+            "selections",
+            "ranging",
+            "from",
+            "a",
+            "burger",
+            ",",
+            "to",
+            "steak",
+            ",",
+            "to",
+            "escargot",
+            "."
+        ]
+    },
+    "17": {
+        "labels": [
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "very",
+            "good",
+            "breads",
+            "as",
+            "well",
+            "."
+        ]
+    },
+    "18": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O"
+        ],
+        "sentence": [
+            "Anyway",
+            ",",
+            "the",
+            "food",
+            "is",
+            "good",
+            ",",
+            "the",
+            "price",
+            "is",
+            "right",
+            "and",
+            "they",
+            "have",
+            "a",
+            "decent",
+            "wine",
+            "list",
+            "."
+        ]
+    },
+    "19": {
+        "labels": [
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "was",
+            "lousy",
+            "-",
+            "too",
+            "sweet",
+            "or",
+            "too",
+            "salty",
+            "and",
+            "the",
+            "portions",
+            "tiny",
+            "."
+        ]
+    },
+    "20": {
+        "labels": [
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "But",
+            "the",
+            "coconut",
+            "rice",
+            "was",
+            "good",
+            "."
+        ]
+    },
+    "21": {
+        "labels": [
+            "O",
+            "O",
+            "B-negative",
+            "I-negative",
+            "I-negative",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "And",
+            "the",
+            "Tom",
+            "Kha",
+            "soup",
+            "was",
+            "pathetic",
+            "."
+        ]
+    },
+    "22": {
+        "labels": [
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "now",
+            "is",
+            "inconsistent",
+            "."
+        ]
+    },
+    "23": {
+        "labels": [
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Try",
+            "the",
+            "crunchy",
+            "tuna",
+            ",",
+            "it",
+            "is",
+            "to",
+            "die",
+            "for",
+            "."
+        ]
+    },
+    "24": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O"
+        ],
+        "sentence": [
+            "Reasonable",
+            "prices",
+            "."
+        ]
+    },
+    "25": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Everything",
+            "at",
+            "Sala",
+            "Thai",
+            "is",
+            "tasty",
+            "and",
+            "well",
+            "-",
+            "portioned",
+            "."
+        ]
+    },
+    "26": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Add",
+            "to",
+            "that",
+            "great",
+            "service",
+            "and",
+            "great",
+            "food",
+            "at",
+            "a",
+            "reasonable",
+            "price",
+            "and",
+            "you",
+            "have",
+            "yourself",
+            "the",
+            "beginning",
+            "of",
+            "a",
+            "great",
+            "evening",
+            "."
+        ]
+    },
+    "27": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Unfortunately",
+            ",",
+            "the",
+            "food",
+            "was",
+            "NOT",
+            "something",
+            "to",
+            "get",
+            "worked",
+            "up",
+            "about",
+            "."
+        ]
+    },
+    "28": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "is",
+            "great",
+            "and",
+            "reasonably",
+            "priced",
+            "."
+        ]
+    },
+    "29": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "got",
+            "enough",
+            "reasons",
+            "to",
+            "keep",
+            "coming",
+            "back",
+            "!",
+            "!",
+            "!"
+        ]
+    },
+    "30": {
+        "labels": [
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Their",
+            "calzones",
+            "are",
+            "horrific",
+            ",",
+            "bad",
+            ",",
+            "vomit",
+            "-",
+            "inducing",
+            ",",
+            "YUCK",
+            "."
+        ]
+    },
+    "31": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-negative",
+            "I-negative",
+            "O",
+            "B-negative",
+            "I-negative",
+            "I-negative",
+            "O",
+            "B-negative",
+            "I-negative",
+            "O"
+        ],
+        "sentence": [
+            "A",
+            "few",
+            "tips",
+            ":",
+            "skip",
+            "the",
+            "turnip",
+            "cake",
+            ",",
+            "roast",
+            "pork",
+            "buns",
+            "and",
+            "egg",
+            "custards",
+            "."
+        ]
+    },
+    "32": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "bagels",
+            "are",
+            "fabulous",
+            "."
+        ]
+    },
+    "33": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "never",
+            "had",
+            "anything",
+            "I",
+            "didn",
+            "'",
+            "t",
+            "like",
+            "here",
+            "."
+        ]
+    },
+    "34": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "definitely",
+            "wouldn",
+            "'",
+            "t",
+            "go",
+            "back",
+            "."
+        ]
+    },
+    "35": {
+        "labels": [
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "While",
+            "the",
+            "ambiance",
+            "and",
+            "atmosphere",
+            "were",
+            "great",
+            ",",
+            "the",
+            "food",
+            "and",
+            "service",
+            "could",
+            "have",
+            "been",
+            "a",
+            "lot",
+            "better",
+            "."
+        ]
+    },
+    "36": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Our",
+            "waitress",
+            "was",
+            "sweet",
+            "and",
+            "accomodating",
+            ",",
+            "not",
+            "overbearing",
+            "."
+        ]
+    },
+    "37": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "have",
+            "tried",
+            "literally",
+            "every",
+            "restaurant",
+            "on",
+            "curry",
+            "row",
+            "."
+        ]
+    },
+    "38": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "My",
+            "goodness",
+            ",",
+            "everything",
+            "from",
+            "the",
+            "fish",
+            "to",
+            "the",
+            "rice",
+            "to",
+            "the",
+            "seaweed",
+            "was",
+            "absolutely",
+            "amazing",
+            "."
+        ]
+    },
+    "39": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "went",
+            "to",
+            "this",
+            "restaurant",
+            "with",
+            "a",
+            "woman",
+            "that",
+            "I",
+            "met",
+            "recently",
+            "."
+        ]
+    },
+    "40": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Good",
+            "spreads",
+            ",",
+            "great",
+            "beverage",
+            "selections",
+            "and",
+            "bagels",
+            "really",
+            "tasty",
+            "."
+        ]
+    },
+    "41": {
+        "labels": [
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "options",
+            "rule",
+            "."
+        ]
+    },
+    "42": {
+        "labels": [
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O"
+        ],
+        "sentence": [
+            "Consistently",
+            "good",
+            "Japanese",
+            "Tapas",
+            "."
+        ]
+    },
+    "43": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "went",
+            "to",
+            "Ruby",
+            "Foo",
+            "'",
+            "s",
+            "after",
+            "work",
+            "with",
+            "a",
+            "group",
+            "of",
+            "6",
+            "."
+        ]
+    },
+    "44": {
+        "labels": [
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "sushi",
+            "was",
+            "awful",
+            "!"
+        ]
+    },
+    "45": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "My",
+            "boyfriend",
+            "and",
+            "I",
+            "went",
+            "there",
+            "to",
+            "celebrate",
+            "my",
+            "birthday",
+            "the",
+            "other",
+            "night",
+            "and",
+            "all",
+            "I",
+            "can",
+            "say",
+            "is",
+            "that",
+            "it",
+            "was",
+            "magnificent",
+            "."
+        ]
+    },
+    "46": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Now",
+            "it",
+            "'",
+            "s",
+            "so",
+            "crowded",
+            "and",
+            "loud",
+            "you",
+            "can",
+            "'",
+            "t",
+            "even",
+            "talk",
+            "to",
+            "the",
+            "person",
+            "next",
+            "to",
+            "you",
+            "."
+        ]
+    },
+    "47": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Go",
+            ",",
+            "go",
+            ",",
+            "hurry",
+            ",",
+            "before",
+            "everyone",
+            "finds",
+            "out",
+            "about",
+            "it",
+            "."
+        ]
+    },
+    "48": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "'",
+            "ve",
+            "been",
+            "many",
+            "time",
+            "and",
+            "have",
+            "never",
+            "been",
+            "disappointed",
+            "."
+        ]
+    },
+    "49": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "was",
+            "great",
+            "."
+        ]
+    },
+    "50": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Don",
+            "'",
+            "t",
+            "leave",
+            "without",
+            "trying",
+            "One",
+            "Night",
+            "in",
+            "Tokyo",
+            "."
+        ]
+    },
+    "51": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "would",
+            "go",
+            "back",
+            "tho",
+            "."
+        ]
+    },
+    "52": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Definately",
+            "check",
+            "it",
+            "out",
+            "!",
+            "!",
+            "!"
+        ]
+    },
+    "53": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "You",
+            "cannot",
+            "go",
+            "wrong",
+            "with",
+            "this",
+            "place",
+            "."
+        ]
+    },
+    "54": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "As",
+            "a",
+            "Japanese",
+            "native",
+            ",",
+            "I",
+            "'",
+            "ve",
+            "lived",
+            "in",
+            "the",
+            "Tristate",
+            "area",
+            "for",
+            "over",
+            "8",
+            "years",
+            ",",
+            "but",
+            "I",
+            "was",
+            "just",
+            "so",
+            "amazed",
+            "at",
+            "this",
+            "place",
+            "."
+        ]
+    },
+    "55": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "loving",
+            "bringing",
+            "friends",
+            "here",
+            "-",
+            "and",
+            "I",
+            "do",
+            "so",
+            "every",
+            "chance",
+            "I",
+            "get",
+            "."
+        ]
+    },
+    "56": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O"
+        ],
+        "sentence": [
+            "With",
+            "the",
+            "theater",
+            "2",
+            "blocks",
+            "away",
+            "we",
+            "had",
+            "a",
+            "delicious",
+            "meal",
+            "in",
+            "a",
+            "beautiful",
+            "room",
+            "."
+        ]
+    },
+    "57": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Even",
+            "my",
+            "Indian",
+            "friend",
+            "couldn",
+            "'",
+            "t",
+            "believe",
+            "how",
+            "good",
+            "and",
+            "tasty",
+            "everything",
+            "was",
+            "."
+        ]
+    },
+    "58": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "We",
+            "were",
+            "not",
+            "dissappointed",
+            "in",
+            "the",
+            "least",
+            "bit",
+            "by",
+            "this",
+            "little",
+            "gem",
+            "."
+        ]
+    },
+    "59": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "A",
+            "pleasant",
+            "surprise",
+            "."
+        ]
+    },
+    "60": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "This",
+            "was",
+            "a",
+            "repeat",
+            "visit",
+            "and",
+            "we",
+            "'",
+            "ll",
+            "definitely",
+            "be",
+            "back",
+            "again",
+            "."
+        ]
+    },
+    "61": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "love",
+            "the",
+            "fact",
+            "that",
+            "the",
+            "pizza",
+            "tastes",
+            "so",
+            "good",
+            "and",
+            "is",
+            "so",
+            "cheap",
+            "."
+        ]
+    },
+    "62": {
+        "labels": [
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Service",
+            "was",
+            "prompt",
+            ",",
+            "friendly",
+            "and",
+            "great",
+            "."
+        ]
+    },
+    "63": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "OU",
+            "MUST",
+            "TRY",
+            "THIS",
+            "RESTAURANT",
+            "."
+        ]
+    },
+    "64": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "All",
+            "pretty",
+            "good",
+            "."
+        ]
+    },
+    "65": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Have",
+            "eaten",
+            "at",
+            "Ginger",
+            "House",
+            "several",
+            "times",
+            ",",
+            "and",
+            "it",
+            "'",
+            "s",
+            "always",
+            "good",
+            "."
+        ]
+    },
+    "66": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "haven",
+            "'",
+            "t",
+            "eat",
+            "a",
+            "lamb",
+            "chop",
+            "as",
+            "delicious",
+            "as",
+            "that",
+            ",",
+            "the",
+            "salads",
+            "are",
+            "really",
+            "nice",
+            "dressed",
+            "with",
+            "lemon",
+            "and",
+            "extra",
+            "virgnin",
+            "olive",
+            "oil",
+            "."
+        ]
+    },
+    "67": {
+        "labels": [
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Drawbacks",
+            ":",
+            "service",
+            "is",
+            "slow",
+            "and",
+            "they",
+            "don",
+            "'",
+            "t",
+            "toast",
+            "!"
+        ]
+    },
+    "68": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "It",
+            "is",
+            "by",
+            "far",
+            "my",
+            "favorite",
+            "restaurant",
+            "in",
+            "Brooklyn",
+            "."
+        ]
+    },
+    "69": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "'",
+            "ve",
+            "been",
+            "to",
+            "Joya",
+            "twice",
+            "and",
+            "I",
+            "will",
+            "never",
+            "go",
+            "again",
+            "."
+        ]
+    },
+    "70": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "A",
+            "hearty",
+            "two",
+            "thumbs",
+            "up",
+            "!"
+        ]
+    },
+    "71": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Great",
+            "find",
+            "!",
+            "!",
+            "!"
+        ]
+    },
+    "72": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "If",
+            "only",
+            "they",
+            "delivered",
+            ",",
+            "they",
+            "'",
+            "d",
+            "make",
+            "a",
+            "mint",
+            "!"
+        ]
+    },
+    "73": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Was",
+            "surprisingly",
+            "disappointed",
+            "."
+        ]
+    },
+    "74": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "prices",
+            "were",
+            "fantastic",
+            "."
+        ]
+    },
+    "75": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "'",
+            "m",
+            "told",
+            "that",
+            "it",
+            "is",
+            "open",
+            "24hrs",
+            "which",
+            "is",
+            "good",
+            "."
+        ]
+    },
+    "76": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "What",
+            "more",
+            "could",
+            "you",
+            "want",
+            "?"
+        ]
+    },
+    "77": {
+        "labels": [
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Excellent",
+            "experience",
+            "."
+        ]
+    },
+    "78": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Definitely",
+            "a",
+            "neighborhood",
+            "favorite",
+            "."
+        ]
+    },
+    "79": {
+        "labels": [
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "is",
+            "terrible",
+            "and",
+            "overall",
+            ",",
+            "I",
+            "would",
+            "have",
+            "to",
+            "say",
+            "avoid",
+            "at",
+            "all",
+            "costs",
+            "."
+        ]
+    },
+    "80": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "is",
+            "prepared",
+            "quickly",
+            "and",
+            "efficiently",
+            "."
+        ]
+    },
+    "81": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "is",
+            "fresh",
+            ",",
+            "delicious",
+            ",",
+            "and",
+            "reasonably",
+            "priced",
+            "."
+        ]
+    },
+    "82": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "This",
+            "is",
+            "my",
+            "favorite",
+            "Italian",
+            "restaurant",
+            "in",
+            "all",
+            "of",
+            "New",
+            "York",
+            "City",
+            "."
+        ]
+    },
+    "83": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Anyway",
+            ",",
+            "this",
+            "is",
+            "the",
+            "last",
+            "time",
+            "I",
+            "cross",
+            "the",
+            "williamsburg",
+            "."
+        ]
+    },
+    "84": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "am",
+            "bringing",
+            "my",
+            "whole",
+            "family",
+            "back",
+            "next",
+            "time",
+            "."
+        ]
+    },
+    "85": {
+        "labels": [
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "Love",
+            "YUKA",
+            "."
+        ]
+    },
+    "86": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-neutral",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "As",
+            "we",
+            "were",
+            "leaving",
+            ",",
+            "the",
+            "couple",
+            "standing",
+            "by",
+            "the",
+            "door",
+            "said",
+            "to",
+            "another",
+            "waiter",
+            ",",
+            "we",
+            "'",
+            "re",
+            "not",
+            "in",
+            "a",
+            "hurry",
+            "."
+        ]
+    },
+    "87": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "I",
+            "have",
+            "been",
+            "coming",
+            "to",
+            "this",
+            "neighborhood",
+            "spot",
+            "for",
+            "years",
+            "."
+        ]
+    },
+    "88": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "We",
+            "will",
+            "be",
+            "back",
+            "."
+        ]
+    },
+    "89": {
+        "labels": [
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "outdoor",
+            "atmosphere",
+            "of",
+            "sitting",
+            "on",
+            "the",
+            "sidewalk",
+            "watching",
+            "the",
+            "world",
+            "go",
+            "by",
+            "50",
+            "feet",
+            "away",
+            "on",
+            "6th",
+            "avenue",
+            "on",
+            "a",
+            "cool",
+            "evening",
+            "was",
+            "wonderful",
+            "."
+        ]
+    },
+    "90": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-neutral",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "A",
+            "large",
+            "is",
+            "$",
+            "20",
+            ",",
+            "and",
+            "toppings",
+            "are",
+            "about",
+            "$",
+            "3",
+            "each",
+            "."
+        ]
+    },
+    "91": {
+        "labels": [
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "spicy",
+            "tuna",
+            "and",
+            "salmon",
+            "are",
+            "the",
+            "best",
+            "we",
+            "'",
+            "ve",
+            "ever",
+            "had",
+            "."
+        ]
+    },
+    "92": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "A",
+            "guaranteeed",
+            "delight",
+            "!"
+        ]
+    },
+    "93": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "was",
+            "very",
+            "good",
+            ",",
+            "a",
+            "great",
+            "deal",
+            ",",
+            "and",
+            "the",
+            "place",
+            "its",
+            "self",
+            "was",
+            "great",
+            "."
+        ]
+    },
+    "94": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-negative",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "food",
+            "is",
+            "usually",
+            "good",
+            "but",
+            "it",
+            "certainly",
+            "isn",
+            "'",
+            "t",
+            "a",
+            "relaxing",
+            "place",
+            "to",
+            "go",
+            "."
+        ]
+    },
+    "95": {
+        "labels": [
+            "O",
+            "B-neutral",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "After",
+            "dinner",
+            ",",
+            "take",
+            "your",
+            "date",
+            "to",
+            "the",
+            "HUGE",
+            "dance",
+            "floor",
+            ",",
+            "probably",
+            "one",
+            "of",
+            "the",
+            "biggest",
+            "you",
+            "'",
+            "ll",
+            "see",
+            "in",
+            "NY",
+            "."
+        ]
+    },
+    "96": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "B-neutral",
+            "O",
+            "B-neutral",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "server",
+            "was",
+            "really",
+            "cool",
+            "and",
+            "served",
+            "us",
+            "our",
+            "food",
+            "and",
+            "drinks",
+            "with",
+            "a",
+            "smile",
+            "."
+        ]
+    },
+    "97": {
+        "labels": [
+            "O",
+            "B-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "O",
+            "B-positive",
+            "I-positive",
+            "I-positive",
+            "O",
+            "B-positive",
+            "I-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "B-positive",
+            "I-positive",
+            "I-positive",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O"
+        ],
+        "sentence": [
+            "The",
+            "dishes",
+            "offered",
+            "were",
+            "unique",
+            ",",
+            "very",
+            "tasty",
+            "and",
+            "fresh",
+            "from",
+            "the",
+            "lamb",
+            "sausages",
+            ",",
+            "sardines",
+            "with",
+            "biscuits",
+            ",",
+            "large",
+            "whole",
+            "shrimp",
+            "to",
+            "the",
+            "amazing",
+            "pistachio",
+            "ice",
+            "cream",
+            "(",
+            "the",
+            "best",
+            "and",
+            "freshest",
+            "I",
+            "'",
+            "ve",
+            "ever",
+            "had",
+            ")",
+            "."
+        ]
+    },
+    "98": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-neutral",
+            "I-neutral",
+            "O"
+        ],
+        "sentence": [
+            "Went",
+            "there",
+            "for",
+            "an",
+            "office",
+            "lunch",
+            "."
+        ]
+    },
+    "99": {
+        "labels": [
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "O",
+            "B-neutral",
+            "O"
+        ],
+        "sentence": [
+            "We",
+            "'",
+            "ve",
+            "only",
+            "eaten",
+            "in",
+            "the",
+            "restaurant",
+            "once",
+            ",",
+            "but",
+            "we",
+            "have",
+            "ordered",
+            "many",
+            "times",
+            "for",
+            "dinner",
+            "."
+        ]
+    }
+}

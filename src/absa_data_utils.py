@@ -19,14 +19,15 @@ import os
 from collections import defaultdict
 import random
 
-from pytorch_pretrained_bert.tokenization import BertTokenizer
-
-class ABSATokenizer(BertTokenizer):     
+from transformers.tokenization_albert import AlbertTokenizer
+ 
+class ABSATokenizer(AlbertTokenizer):     
     def subword_tokenize(self, tokens, labels): # for AE
         split_tokens, split_labels= [], []
         idx_map=[]
         for ix, token in enumerate(tokens):
-            sub_tokens=self.wordpiece_tokenizer.tokenize(token)
+            sub_tokens=self._tokenize(token)
+            
             for jx, sub_token in enumerate(sub_tokens):
                 split_tokens.append(sub_token)
                 if labels[ix]=="B" and jx>0:
@@ -92,6 +93,38 @@ class DataProcessor(object):
         with open(input_file) as f:
             return json.load(f)
         
+class E2EProcessor(DataProcessor):
+    """Processor for the SemEval Aspect Extraction ."""
+
+    def get_train_examples(self, data_dir, fn="train.json"):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, fn)), "train")
+
+    def get_dev_examples(self, data_dir, fn="val.json"):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, fn)), "val")
+    
+    def get_test_examples(self, data_dir, fn="test.json"):
+        """See base class."""
+        return self._create_examples(
+            self._read_json(os.path.join(data_dir, fn)), "test")
+
+    def get_labels(self):
+        """See base class."""
+        return ["O", "B-positive","B-negative","B-neutral","B-conflict","I-positive","I-negative","I-neutral","I-conflict"]
+
+    def _create_examples(self, lines, set_type):
+        """Creates examples for the training and dev sets."""
+        examples = []
+        for (i, ids) in enumerate(lines):
+            guid = "%s-%s" % (set_type, ids )
+            text_a = lines[ids]['sentence']
+            label = lines[ids]['labels'] #labels for E2E
+            examples.append(
+                InputExample(guid=guid, text_a=text_a, label=label) )
+        return examples        
         
 class AeProcessor(DataProcessor):
     """Processor for the SemEval Aspect Extraction ."""
@@ -159,8 +192,9 @@ class AscProcessor(DataProcessor):
             label = lines[ids]['polarity']
             examples.append(
                 InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-        return examples     
-    
+        return examples  
+
+ 
 def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer, mode):
     """Loads a data file into a list of `InputBatch`s.""" #check later if we can merge this function with the SQuAD preprocessing 
     label_map = {}
@@ -169,7 +203,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
 
     features = []
     for (ex_index, example) in enumerate(examples):
-        if mode!="ae":
+        if mode!="ae" and mode!="e2e":
             tokens_a = tokenizer.tokenize(example.text_a)
         else: #only do subword tokenization.
             tokens_a, labels_a, example.idx_map= tokenizer.subword_tokenize([token.lower() for token in example.text_a], example.label )
@@ -221,7 +255,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         assert len(input_mask) == max_seq_length
         assert len(segment_ids) == max_seq_length
 
-        if mode!="ae":
+        if mode!="ae" and mode!="e2e":
             label_id = label_map[example.label]
         else:
             label_id = [-1] * len(input_ids) #-1 is the index to ignore
@@ -231,12 +265,89 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
                 lb = lb[0:(max_seq_length - 2)]
             label_id[1:len(lb)+1] = lb
 
-        features.append(
-                InputFeatures(
+        features.append(InputFeatures(
                         input_ids=input_ids,
                         input_mask=input_mask,
                         segment_ids=segment_ids,
                         label_id=label_id))
+    return features
+
+def cetf(examples, label_list, max_seq_length, tokenizer, mode):
+    """Loads a data file into a list of `InputBatch`s.""" #check later if we can merge this function with the SQuAD preprocessing 
+    label_map = {}
+    for (i, label) in enumerate(label_list):
+        label_map[label] = i
+
+    features = []
+    for (ex_index, example) in enumerate(examples):
+        if mode!="ae" and mode!="e2e":
+            tokens_a = tokenizer.tokenize(example.text_a)
+        else: #only do subword tokenization.
+            tokens_a, labels_a, example.idx_map= tokenizer.subword_tokenize([token.lower() for token in example.text_a], example.label )
+
+        tokens_b = None
+        if example.text_b:
+            tokens_b = tokenizer.tokenize(example.text_b)
+
+        if tokens_b:
+            # Modifies `tokens_a` and `tokens_b` in place so that the total
+            # length is less than the specified length.
+            # Account for [CLS], [SEP], [SEP] with "- 3"
+            _truncate_seq_pair(tokens_a, tokens_b, max_seq_length - 3)
+        else:
+            # Account for [CLS] and [SEP] with "- 2"
+            if len(tokens_a) > max_seq_length - 2:
+                tokens_a = tokens_a[0:(max_seq_length - 2)]
+
+        tokens = []
+        segment_ids = []
+        tokens.append("[CLS]")
+        segment_ids.append(0)
+        for token in tokens_a:
+            tokens.append(token)
+            segment_ids.append(0)
+        tokens.append("[SEP]")
+        segment_ids.append(0)
+
+        if tokens_b:
+            for token in tokens_b:
+                tokens.append(token)
+                segment_ids.append(1)
+            tokens.append("[SEP]")
+            segment_ids.append(1)
+
+        input_ids = tokenizer.convert_tokens_to_ids(tokens)
+
+        # The mask has 1 for real tokens and 0 for padding tokens. Only real
+        # tokens are attended to.
+        input_mask = [1] * len(input_ids)
+
+        # Zero-pad up to the sequence length.
+        while len(input_ids) < max_seq_length:
+            input_ids.append(0)
+            input_mask.append(0)
+            segment_ids.append(0)
+
+        assert len(input_ids) == max_seq_length
+        assert len(input_mask) == max_seq_length
+        assert len(segment_ids) == max_seq_length
+
+        if mode!="ae" and mode!="e2e":
+            label_id = label_map[example.label]
+        else:
+            label_id = [-1] * len(input_ids) #-1 is the index to ignore
+            #truncate the label length if it exceeds the limit.
+            lb=[label_map[label] for label in labels_a]
+            if len(lb) > max_seq_length - 2:
+                lb = lb[0:(max_seq_length - 2)]
+            label_id[1:len(lb)+1] = lb
+
+        features.append([tokens_a,
+            InputFeatures(
+                        input_ids=input_ids,
+                        input_mask=input_mask,
+                        segment_ids=segment_ids,
+                        label_id=label_id)])
     return features
 
 

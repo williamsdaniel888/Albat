@@ -23,14 +23,17 @@ from math import ceil
 import numpy as np
 import torch
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from pytorch_pretrained_bert.optimization import BertAdam
-from pytorch_pretrained_bert.tokenization import BertTokenizer
-from pytorch_pretrained_bert.modeling import BertPreTrainedModel, BertModel
+import time
+
+from transformers import get_linear_schedule_with_warmup
+from transformers.optimization import AdamW
+from transformers.tokenization_albert import AlbertTokenizer
+from transformers.modeling_albert import AlbertModel, AlbertPreTrainedModel
+
 import absa_data_utils as data_utils
 from absa_data_utils import ABSATokenizer
 import modelconfig
-
-from bat_ae import BertForABSA
+from albat_ae import AlbertForABSA
 
 logging.basicConfig(format = '%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt = '%m/%d/%Y %H:%M:%S',
@@ -45,19 +48,17 @@ def warmup_linear(x, warmup=0.002):
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def train(args):
-    # ae laptop best values
-    dropout = 0.0
-    epsilon = 0.2
-    #epoch = 4
-
-    # ae rest best values
-    # dropout = 0.0
-    # epsilon = 5.0
-    # epoch = 8
-
+    start = time.time()
+    torch.cuda.empty_cache()
+    # ae best values
+    epsilon = 2
+    wdec = 1e-1
+    
     processor = data_utils.AeProcessor()
     label_list = processor.get_labels()
-    tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
+    # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
+    tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")
+
     train_examples = processor.get_train_examples(args.data_dir)
     num_train_steps = int(len(train_examples) / args.train_batch_size) * args.num_train_epochs
 
@@ -101,21 +102,28 @@ def train(args):
         valid_losses=[]
     #<<<<< end of validation declaration
 
-    model = BertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels = len(label_list), dropout=dropout, epsilon=epsilon)
+    # model = AlbertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels = len(label_list), epsilon=epsilon)
+    model = AlbertForABSA.from_pretrained("albert-base-v2", num_labels = len(label_list), epsilon=epsilon)
+     
+    params_total = sum(p.numel() for p in model.parameters())
+    params_trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    logger.info("***** Model Properties *****")
+    logger.info("  Parameters (Total): {:.2e}".format(params_total))
+    logger.info("  Parameters (Trainable): {:.2e}".format(params_trainable))
+    
     model.to(device)
+
     # Prepare optimizer
     param_optimizer = [(k, v) for k, v in model.named_parameters() if v.requires_grad==True]
     param_optimizer = [n for n in param_optimizer if 'pooler' not in n[0]]
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': wdec},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
         ]
     t_total = num_train_steps
-    optimizer = BertAdam(optimizer_grouped_parameters,
-                         lr=args.learning_rate,
-                         warmup=args.warmup_proportion,
-                         t_total=t_total)
+    optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate)#
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=int(args.warmup_proportion*t_total), num_training_steps=t_total)
 
     global_step = 0
     model.train()
@@ -123,7 +131,6 @@ def train(args):
         for step, batch in enumerate(train_dataloader):
             batch = tuple(t.to(device) for t in batch)
             input_ids, segment_ids, input_mask, label_ids = batch
-
 
             _loss, adv_loss = model(input_ids, segment_ids, input_mask, label_ids)
             loss = _loss + adv_loss
@@ -133,6 +140,7 @@ def train(args):
             for param_group in optimizer.param_groups:
                 param_group['lr'] = lr_this_step
             optimizer.step()
+            scheduler.step()
             optimizer.zero_grad()
             global_step += 1
             #>>>> perform validation at the end of each epoch .
@@ -159,14 +167,25 @@ def train(args):
             json.dump({"valid_losses": valid_losses}, fw)
     else:
         torch.save(model, os.path.join(args.output_dir, "model.pt") )
+    mstats = torch.cuda.memory_stats() 
+    duration = time.time()-start
+    logger.info("Training completed in {} minutes, {} seconds".format(duration//60,ceil(duration%60)))
+    logger.info("***** GPU Memory Statistics *****")
+    logger.info("  Allocated bytes (Peak):      {} MiB".format(mstats['allocated_bytes.all.peak']/1048576))
+    logger.info("  Allocated bytes (Allocated): {} MiB".format(mstats['allocated_bytes.all.allocated']/1048576))
 
 
 def test(args):  # Load a trained model that you have fine-tuned (we assume evaluate on cpu)    
+    start = time.time()
+    torch.cuda.empty_cache()
     processor = data_utils.AeProcessor()
     label_list = processor.get_labels()
-    tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
+    # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
+    tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")
+
     eval_examples = processor.get_test_examples(args.data_dir)
-    eval_features = data_utils.convert_examples_to_features(eval_examples, label_list, args.max_seq_length, tokenizer, "ae")
+    eval_features = data_utils.convert_examples_to_features(eval_examples, label_list,
+     args.max_seq_length, tokenizer, "ae")
 
     logger.info("***** Running evaluation *****")
     logger.info("  Num examples = %d", len(eval_examples))
@@ -181,6 +200,11 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
     eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=args.eval_batch_size)
 
     model = torch.load(os.path.join(args.output_dir, "model.pt") )
+    params_total = sum(p.numel() for p in model.parameters())
+    params_trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    logger.info("***** Model Properties *****")
+    logger.info("  Parameters (Total): {:.2e}".format(params_total))
+    logger.info("  Parameters (Trainable): {:.2e}".format(params_trainable))
     model.to(device)
     model.eval()
     
@@ -210,11 +234,17 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
         raw_X=[recs[qx]["sentence"] for qx in range(len(eval_examples) ) ]
         idx_map=[recs[qx]["idx_map"] for qx in range(len(eval_examples)) ]
         json.dump({"logits": full_logits, "raw_X": raw_X, "idx_map": idx_map}, fw)
+    mstats = torch.cuda.memory_stats()
+    duration = time.time()-start
+    logger.info("Testing completed in {} minutes, {} seconds".format(duration//60,ceil(duration%60)))
+    logger.info("***** GPU Memory Statistics *****")
+    logger.info("  Allocated bytes (Peak):      {} MiB".format(mstats['allocated_bytes.all.peak']/1048576))
+    logger.info("  Allocated bytes (Allocated): {} MiB".format(mstats['allocated_bytes.all.allocated']/1048576))
 
 def main():    
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--bert_model", default='bert-base', type=str)
+    parser.add_argument("--bert_model", default='albert-base', type=str)
 
     parser.add_argument("--data_dir",
                         default=None,
