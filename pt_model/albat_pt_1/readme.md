@@ -12,7 +12,7 @@ It is possible to perform further pre-training with Albert using code from Xu et
 If you already have a further pre-trained model (with the files `config.json`,  `pytorch_model.bin`, `spiece.model` and `tokenizer_config.json`), go to step 6. 
 
 ## Further Pre-training Albert
-1. Install pre-requisites
+1. Install pre-requisites:
 ```
 mkdir /content/
 cd /content/
@@ -22,7 +22,7 @@ git clone https://github.com/NVIDIA/apex
 cd apex
 pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
-2. Download training scripts.
+2. Download training scripts:
 ```
 cd /content/
 git clone https://github.com/howardhsu/BERT-for-RRC-ABSA.git
@@ -30,7 +30,7 @@ git clone https://github.com/howardhsu/BERT-for-RRC-ABSA.git
 
 3. Download training data to the directory `transformers/data/pt` as per Xu et al.'s [instructions](https://github.com/howardhsu/BERT-for-RRC-ABSA/blob/master/transformers/amazon_yelp.md) and run `prep_domain_tag_corpus.py`.
 
-4. Install patches for the pre-training scripts
+4. Install patches for the pre-training scripts:
 
 ```
 cd /content/BERT-for-RRC-ABSA/transformers/src
@@ -38,7 +38,7 @@ cp /content/Albat/pt_model/albat_pt_1/pt.py /content/BERT-for-RRC-ABSA/transform
 cd ../script/
 cp /content/Albat/pt_model/albat_pt_1/pt.sh /content/BERT-for-RRC-ABSA/transformers/src/pt.sh
 ```
-5. Run further pre-training with `albert-base-v2`.
+5. Run further pre-training with `albert-base-v2`:
 ```
 cd /content/BERT-for-RRC-ABSA/transformers/
 bash script/pt.sh albert SkipDomBert 0 # preprocessing data takes ~1 hour for 5% subset
