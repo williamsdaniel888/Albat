@@ -55,7 +55,7 @@ def train(args):
 
     processor = data_utils.AscProcessor()
     label_list = processor.get_labels()
-    # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model]) 
+    # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model]) 
     tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")
 
     train_examples = processor.get_train_examples(args.data_dir)
@@ -101,7 +101,7 @@ def train(args):
         valid_losses=[]
     #<<<<< end of validation declaration
 
-    # model = AlbertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model], num_labels=len(label_list), epsilon=epsilon)
+    # model = AlbertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model], num_labels=len(label_list), epsilon=epsilon)
     model = AlbertForABSA.from_pretrained("albert-base-v2", num_labels = len(label_list), epsilon=epsilon)
         
     params_total = sum(p.numel() for p in model.parameters())
@@ -179,7 +179,7 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
     torch.cuda.empty_cache()
     processor = data_utils.AscProcessor()
     label_list = processor.get_labels()
-    # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])
+    # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model])
     tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")
 
     eval_examples = processor.get_test_examples(args.data_dir)
@@ -237,7 +237,7 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
 def main():    
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--bert_model", default='albert-base', type=str)
+    parser.add_argument("--albert_model", default='albert-base', type=str)
 
     parser.add_argument("--data_dir",
                         default=None,
