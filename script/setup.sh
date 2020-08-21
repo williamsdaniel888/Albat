@@ -1,5 +1,7 @@
 # Install Transformers
 pip install transformers
+# Install patch for Transformers' modeling_albert.py with head_mask = None
+cp /content/Albat/src/modeling_albert.py /usr/local/lib/python3.6/dist-packages/transformers/modeling_albert.py
 
 # Install JDK 8 for AE task performance evaluation
 sudo apt-get purge --auto-remove openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless
