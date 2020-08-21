@@ -1,47 +1,20 @@
-# Adversarial Training for Aspect-Based Sentiment Analysis with BERT
-Code for "[Adversarial Training for Aspect-Based Sentiment Analysis with BERT](https://arxiv.org/pdf/2001.11316)".
+# Albat
 
-We have used the codebase from the following paper and improved upon their results by applying adversarial training.
-"[BERT Post-Training for Review Reading Comprehension and Aspect-based Sentiment Analysis](https://www.aclweb.org/anthology/N19-1242.pdf)".
+This is the repository for code developed for the dissertation "Domain Adaptation through Adversarial Training of
+Albert for Aspect-based Sentiment Analysis".
+
+We have used code derived from "[Adversarial Training for Aspect-Based Sentiment Analysis with BERT](https://arxiv.org/pdf/2001.11316)" and 
+"[BERT Post-Training for Review Reading Comprehension and Aspect-based Sentiment Analysis](https://www.aclweb.org/anthology/N19-1242.pdf)", performing aspect-based sentiment analysis (ABSA) by using adversarial training with [ALBERT: A Lite BERT for Self-supervised Learning of Language Representations](https://arxiv.org/abs/1909.11942).
 
 ## ABSA Tasks
-We focus on two major tasks in Aspect-Based Sentiment Analysis (ABSA).
+We focus on three tasks in ABSA:
 
-Aspect Extraction (AE): given a review sentence ("The retina display is great."), find aspects("retina display");
+- **Aspect Extraction (AE)**: given a review sentence, find the aspect phrases;
 
-Aspect Sentiment Classification (ASC): given an aspect ("retina display") and a review sentence ("The retina display is great."), detect the polarity of that aspect (positive).
+- **Aspect Sentiment Classification (ASC)**: given an aspect and a review sentence, detect the polarity of that aspect;
 
-## Running
+- **End-to-end ABSA (E2E-ABSA)**: given a review sentence, find aspects and classify their sentiment polarities.
 
-Place laptop and restaurant post-trained BERTs into ```pt_model/laptop_pt``` and ```pt_model/rest_pt```, respectively. The post-trained Laptop weights can be download [here](https://drive.google.com/file/d/1io-_zVW3sE6AbKgHZND4Snwh-wi32L4K/view?usp=sharing) and restaurant [here](https://drive.google.com/file/d/1TYk7zOoVEO8Isa6iP0cNtdDFAUlpnTyz/view?usp=sharing).
+## Execution
 
-Execute the following command to run the model for Aspect Extraction task:
-
-```bash run_absa.sh ae laptop_pt laptop pt_ae 9 0```
-
-Here, ```laptop_pt``` is the post-trained weights for laptop, ```laptop``` is the domain, ```pt_ae``` is the fine-tuned folder in ```run/```, ```9``` means run 9 times and ```0``` means use gpu-0.
-
-Similarly,
-```
-bash run_absa.sh ae rest_pt rest pt_ae 9 0
-bash run_absa.sh asc laptop_pt laptop pt_asc 9 0
-bash run_absa.sh asc rest_pt rest pt_asc 9 0
-```
-### Evaluation
-Evaluation wrapper code has been written in ipython notebook ```eval/eval.ipynb```. 
-AE ```eval/evaluate_ae.py``` additionally needs Java JRE/JDK to be installed.
-
-Open ```result.ipynb``` and check the results.
-
-## Citation
-
-```
-@misc{karimi2020adversarial,
-    title={Adversarial Training for Aspect-Based Sentiment Analysis with BERT},
-    author={Akbar Karimi and Leonardo Rossi and Andrea Prati and Katharina Full},
-    year={2020},
-    eprint={2001.11316},
-    archivePrefix={arXiv},
-    primaryClass={cs.LG}
-}
-```
+The Jupyter notebook `ALBAT Loader.ipynb` contains code for fine-tuning `albert-base-v2` on the three ABSA tasks with various datasets. We also provide instructions for further pre-training Albert in the markdown document `pt_model/albat_pt_1/readme.md`.
