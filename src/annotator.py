@@ -58,14 +58,17 @@ def colorizer(tokens,labels,names):
 def pad(s):
     return " "*(15-len(s))
 
-def extractor(n,prediction_path,truth_path):
+def extractor(n,prediction_path,truth_path,albert_model):
 
     with open(prediction_path) as f:
         preds1 = json.load(f)
     with open(truth_path+"test.json") as f:
         truth = json.load(f)
+    if albert_model == 'voidful/albert_chinese_base':
+        tokenizer = adu.ABSATokenizerB.from_pretrained(albert_model)
+    else:
+        tokenizer = adu.ABSATokenizer.from_pretrained(albert_model)
 
-    tokenizer = adu.ABSATokenizer.from_pretrained("albert-base-v2")
     processor = adu.E2EProcessor()
     names = processor.get_labels()
     eval_examples = processor.get_test_examples(truth_path)

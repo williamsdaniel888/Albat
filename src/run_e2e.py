@@ -32,7 +32,7 @@ from transformers.tokenization_albert import AlbertTokenizer
 from transformers.modeling_albert import AlbertModel, AlbertPreTrainedModel
 
 import absa_data_utils as data_utils
-from absa_data_utils import ABSATokenizer
+from absa_data_utils import ABSATokenizer, ABSATokenizerB
 import modelconfig
 from albat_e2e import AlbertForABSA
 
@@ -58,7 +58,10 @@ def train(args):
     processor = data_utils.E2EProcessor()
     label_list = processor.get_labels()
     # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model])
-    tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")
+    if args.albert_model == 'voidful/albert_chinese_base':
+        tokenizer = ABSATokenizerB.from_pretrained(args.albert_model)
+    else:
+        tokenizer = ABSATokenizer.from_pretrained(args.albert_model)
 
     train_examples = processor.get_train_examples(args.data_dir)
     num_train_steps = int(len(train_examples) / args.train_batch_size) * args.num_train_epochs
@@ -104,8 +107,8 @@ def train(args):
     #<<<<< end of validation declaration
 
     # model = AlbertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model], num_labels = len(label_list), epsilon=epsilon)
-    model = AlbertForABSA.from_pretrained("albert-base-v2", num_labels = len(label_list), epsilon=epsilon)
-    
+    model = AlbertForABSA.from_pretrained(args.albert_model, num_labels = len(label_list), epsilon=epsilon)
+
     params_total = sum(p.numel() for p in model.parameters())
     params_trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     logger.info("***** Model Properties *****")
@@ -182,7 +185,10 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
     processor = data_utils.E2EProcessor()
     label_list = processor.get_labels()
     # tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model])
-    tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")
+    if args.albert_model == 'voidful/albert_chinese_base':
+        tokenizer = ABSATokenizerB.from_pretrained(args.albert_model)
+    else:
+        tokenizer = ABSATokenizer.from_pretrained(args.albert_model)
 
     eval_examples = processor.get_test_examples(args.data_dir)
     eval_features = data_utils.convert_examples_to_features(eval_examples, label_list,
@@ -246,7 +252,7 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
 def main():    
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--albert_model", default='albert-base', type=str)
+    parser.add_argument("--albert_model", default='albert-base-v2', type=str)
 
     parser.add_argument("--data_dir",
                         default=None,
@@ -305,7 +311,7 @@ def main():
     parser.add_argument('--seed',
                         type=int,
                         default=0,
-                        help="random seed for initialization")
+                        help="Random seed for initialization")
     
     args = parser.parse_args()
     

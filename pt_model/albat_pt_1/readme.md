@@ -53,13 +53,25 @@ We have found that when using the Tesla P100 training with 1\% of the review cor
 7. In the three scripts `run_ae.py`, `run_asc.py` and `run_e2e.py` you will need to modify the functions **train()** and **test()**.
 
 7a. In **train()**: 
- - Uncomment `tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.bert_model])`
- - Comment out `tokenizer = ABSATokenizer.from_pretrained("albert-base-v2")`
+ - Uncomment `tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model])`
+ - Comment out 
+ ```
+ if args.albert_model == 'voidful/albert_chinese_base':
+        tokenizer = ABSATokenizerB.from_pretrained(args.albert_model)
+    else:
+        tokenizer = ABSATokenizer.from_pretrained(args.albert_model)
+ ```
  - Uncomment `model = AlbertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model], num_labels = len(label_list), epsilon=epsilon)`
- - Comment out `model = AlbertForABSA.from_pretrained("albert-base-v2", num_labels = len(label_list), epsilon=epsilon)`
+ - Comment out `model = AlbertForABSA.from_pretrained(args.albert_model, num_labels = len(label_list), epsilon=epsilon)`
 
 7b. In **test()**:
- - Uncomment `model = AlbertForABSA.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model], num_labels = len(label_list), epsilon=epsilon)`
- - Comment out `model = AlbertForABSA.from_pretrained("albert-base-v2", num_labels = len(label_list), epsilon=epsilon)`
+ - Uncomment `tokenizer = ABSATokenizer.from_pretrained(modelconfig.MODEL_ARCHIVE_MAP[args.albert_model])`
+ - Comment out 
+ ```
+ if args.albert_model == 'voidful/albert_chinese_base':
+        tokenizer = ABSATokenizerB.from_pretrained(args.albert_model)
+    else:
+        tokenizer = ABSATokenizer.from_pretrained(args.albert_model)
+```        
 
-8. The pre-trained models can now be loaded for fine-tuning.
+8. The pre-trained models can now be loaded for fine-tuning. Make sure to specify the model name for `run_absa_traineval.py`.
