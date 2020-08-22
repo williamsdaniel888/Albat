@@ -21,8 +21,25 @@ from collections import defaultdict
 import random
 
 from transformers.tokenization_albert import AlbertTokenizer
+from transformers.tokenization_bert import BertTokenizer
  
 class ABSATokenizer(AlbertTokenizer):     
+    def subword_tokenize(self, tokens, labels): # for AE
+        split_tokens, split_labels= [], []
+        idx_map=[]
+        for ix, token in enumerate(tokens):
+            sub_tokens=self._tokenize(token)
+            
+            for jx, sub_token in enumerate(sub_tokens):
+                split_tokens.append(sub_token)
+                if labels[ix]=="B" and jx>0:
+                    split_labels.append("I")
+                else:
+                    split_labels.append(labels[ix])
+                idx_map.append(ix)
+        return split_tokens, split_labels, idx_map
+
+class ABSATokenizerB(BertTokenizer):     
     def subword_tokenize(self, tokens, labels): # for AE
         split_tokens, split_labels= [], []
         idx_map=[]
