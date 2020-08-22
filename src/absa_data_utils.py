@@ -135,10 +135,10 @@ class AeProcessor(DataProcessor):
         return self._create_examples(
             self._read_json(os.path.join(data_dir, fn)), "train")
 
-    def get_dev_examples(self, data_dir, fn="dev.json"):
+    def get_dev_examples(self, data_dir, fn="val.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, fn)), "dev")
+            self._read_json(os.path.join(data_dir, fn)), "val")
     
     def get_test_examples(self, data_dir, fn="test.json"):
         """See base class."""
@@ -169,10 +169,10 @@ class AscProcessor(DataProcessor):
         return self._create_examples(
             self._read_json(os.path.join(data_dir, fn)), "train")
 
-    def get_dev_examples(self, data_dir, fn="dev.json"):
+    def get_dev_examples(self, data_dir, fn="val.json"):
         """See base class."""
         return self._create_examples(
-            self._read_json(os.path.join(data_dir, fn)), "dev")
+            self._read_json(os.path.join(data_dir, fn)), "val")
     
     def get_test_examples(self, data_dir, fn="test.json"):
         """See base class."""
