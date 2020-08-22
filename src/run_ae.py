@@ -236,11 +236,12 @@ def test(args):  # Load a trained model that you have fine-tuned (we assume eval
         #sort by original order for evaluation
         recs={}
         for qx, ex in enumerate(eval_examples):
-            recs[int(ex.guid.split("-")[1]) ]={"sentence": ex.text_a, "idx_map": ex.idx_map, "logit": full_logits[qx][1:]} #skip the [CLS] tag.
+            recs[int(ex.guid.split("-")[1]) ] = {"sentence": ex.text_a, "idx_map": ex.idx_map, "logit": full_logits[qx][1:], 'label_ids':full_label_ids[qx][1:]} #skip the [CLS] tag.
         full_logits=[recs[qx]["logit"] for qx in range(len(full_logits))]
+        f_label_ids = [recs[qx]["label_ids"] for qx in range(len(full_label_ids))]
         raw_X=[recs[qx]["sentence"] for qx in range(len(eval_examples) ) ]
         idx_map=[recs[qx]["idx_map"] for qx in range(len(eval_examples)) ]
-        json.dump({"logits": full_logits, "raw_X": raw_X, "idx_map": idx_map}, fw)
+        json.dump({"logits": full_logits, "raw_X": raw_X, "idx_map": idx_map, 'label_ids':f_label_ids}, fw)
     mstats = torch.cuda.memory_stats()
     duration = time.time()-start
     logger.info("Testing completed in {} minutes, {} seconds".format(duration//60,ceil(duration%60)))
