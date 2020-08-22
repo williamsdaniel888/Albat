@@ -51,9 +51,8 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 def train(args):
     start = time.time()
     torch.cuda.empty_cache()
-    # e2e best values
     epsilon = 2
-    wdec = 1e-1
+    wdec = 1e-2
     
     processor = data_utils.E2EProcessor()
     label_list = processor.get_labels()
